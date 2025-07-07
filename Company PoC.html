@@ -40,8 +40,7 @@
                 sub.value = brand.value + " - " + question.value;
             }
             console.log('Subject set to:', sub.value);
-        }
-        if(description.length) {
+        }else if(description.length) {
             description[description.length-1].value = brand.value + '\n' + zip.value;
             console.log('Description :', description[description.length-1].value);
         }
