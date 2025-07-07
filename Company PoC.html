@@ -1,0 +1,322 @@
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <FORM> element to your page.             -->
+<!--  ----------------------------------------------------------------------  -->
+
+<form action="https://ecic2--qsedev.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D8N0000008i03" method="POST">
+
+<input type=hidden name="orgid" value="00D8N0000008i03">
+<input type=hidden name="retURL" value="http://google.co.in">
+<input type="hidden" name="00N5A00000H3vNA" value = "US">
+<input type="hidden" name="recordType" id="recordType" value="">
+<input type="hidden" id="subject" maxlength="80" name="subject" size="20" type="text" value=""/>
+<input type="hidden" id="00N5A00000Gqy6h" name="00N5A00000Gqy6h" title="Country For Decoding" value ="US"><br>
+<input type="hidden" id="00N5A00000Gqy8J" maxlength="255" name="00N5A00000Gqy8J" size="20" type="text" value="The Coca-Cola Company Webform" />
+
+<script>
+    function setEcommerce(){
+        var brand = document.getElementById("brand");
+        var recordTypeField = document.getElementById("recordType");
+        var sub = document.getElementById("subject");
+        var help = document.getElementById("help");
+        var question = document.getElementById("question");
+        var zip = document.getElementById("00N5A00000H3vOP");
+        var description = document.getElementsByName("description");
+        if(brand.value === "Coca-Cola Store"){
+            sub.value = help.value + " - " + question.value;
+            recordTypeField.value = "0125A000001EUyD";
+            console.log('Setting record type to eCommerce:', recordTypeField.value);
+            if (help.value === "I have a Product Quality issue") {
+                sub.value = brand.value + ' - ' + help.value;
+            }
+            else{
+                sub.value = brand.value + " - " + question.value;
+            }
+            console.log('Subject set to:', sub.value);
+        }
+        if(description.length) {
+            description[description.length-1].value = brand.value + '\n' + zip.value;
+            console.log('Description :', description[description.length-1].value);
+        }
+    }
+    function handleHelpOptionChange() {
+        var help = document.getElementById("help");
+        var question = document.getElementById("question");
+        var sub = document.getElementById("subject");
+        var brand = document.getElementById("brand");
+        var recordTypeField = document.getElementById("recordType");
+        var description = document.getElementsByName("description");
+
+        if (help.value === "I have a Product Quality issue") {
+            sub.value = brand.value + ' - ' + help.value;
+            recordTypeField.value = "0125A000001EUyG";
+            console.log('Subject set to:', sub.value);
+            console.log('Setting record type to Quality Issue:', recordTypeField.value);
+        }
+        else if (help.value === "I have a Question") {
+            sub.value = help.value + " - " + question.value;
+            if (question.value === "Nutrition & Ingredients" || question.value === "Product Availability" || question.value === "Corporate") {
+                recordTypeField.value = "0125A000001EUyE";
+                console.log('Subject set to:', sub.value);
+                console.log('Setting record type to Non-Quality:', recordTypeField.value);
+            }
+            else if (question.value === "Promotions & Rewards") {
+                recordTypeField.value = "0125A000001EUyF";
+                console.log('Subject set to:', sub.value);
+                console.log('Setting record type to Promotion:', recordTypeField.value);
+            }
+            else {
+                recordTypeField.value = "0125A000001EUyC";
+                console.log('Subject set to:', sub.value);
+                console.log('Setting record type to Default:', recordTypeField.value);
+            }
+        }
+        setEcommerce();
+    }
+</script>
+
+<style>
+    .webform-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 2px solid #414141;
+        border-radius: 25px;
+        margin-bottom: 10px;
+    }
+</style>
+ 
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+<!--  these lines if you wish to test in debug mode.                          -->
+<input type="hidden" name="debug" value="1">      
+<input type="hidden" name="debugEmail" value="arka.maitra@capgemini.com">                                     
+<!--  ----------------------------------------------------------------------  -->
+
+<div class="webform-container">
+
+    <center>
+        <h2>Coca‑Cola Company Webform</h2>
+    </center><br>
+
+    <div>
+        <label>How can we help? : </label>
+        <select id="help" name="help" onchange="handleHelpOptionChange()">
+            <option value="">--None--</option>
+            <option value="I have a Question">I have a Question</option> // I have a Question - corporate
+            <option value="I have a Product Quality issue">I have a Product Quality issue</option>
+        </select><br><br>
+    </div>
+
+    <div>
+        <label for="question">What is your question about? : </label>
+        <select id="question" name="question" onchange="handleHelpOptionChange()">
+            <option value="">--None--</option>
+            <option value="Corporate">Corporate</option>
+            <option value="Product Availability">Product Availability</option>
+            <option value="Nutrition & Ingredients">Nutrition & Ingredients</option>
+            <option value="Promotions & Rewards">Promotions & Rewards</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+    </div>
+    
+    Country : <select>
+        <option value="">--None--</option>
+        <option value="United States">United States</option>
+        <option value="Canada">Canada</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+    
+    <label>Do you still have the affected product? : </label>
+    <select>
+        <option value="">--None--</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option><br><br>
+    </select><br><br>
+    
+    Please enter the date code from the package : <input  id="00N5A00000H3vNw" maxlength="255" name="00N5A00000H3vNw" size="20" type="text" /><br><br>
+
+    What is the brand? : 
+    <select id="brand" name="brand" onchange="setEcommerce()">
+        <option value="">--None--</option>
+        <option value="Coca-Cola">Coca-Cola</option>
+        <option value="Coca-Cola Zero Sugar">Coca-Cola Zero Sugar</option>
+        <option value="Coca-Cola Store">Coca-Cola Store</option>
+        <option value="AHA">AHA</option>
+        <option value="Bacardi Mixers">Bacardi Mixers</option>
+        <option value="Barq's">Barq's</option>
+        <option value="Core Power">Core Power</option>
+        <option value="Dasani">Dasani</option>
+        <option value="Diet Coke">Diet Coke</option>
+        <option value="Dunkin' Ready To Drink">Dunkin' Ready To Drink</option>
+        <option value="Fairlife">Fairlife</option>
+        <option value="Fanta">Fanta</option>
+        <option value="Fresca">Fresca</option>
+        <option value="Fuze">Fuze</option>
+        <option value="Gold Peak">Gold Peak</option>
+        <option value="Hi-C">Hi-C</option>
+        <option value="Honest">Honest</option>
+        <option value="Hubert's Lemonade">Hubert's Lemonade</option>
+        <option value="Mello Yello">Mello Yello</option>
+        <option value="Minute Maid">Minute Maid</option>
+        <option value="Moxie">Moxie</option>
+        <option value="Peace Tea">Peace Tea</option>
+        <option value="Pibb Xtra">Pibb Xtra</option>
+        <option value="Powerade">Powerade</option>
+        <option value="Seagram's">Seagram's</option>
+        <option value="Simply">Simply</option>
+        <option value="Smartwater">Smartwater</option>
+        <option value="Sprite">Sprite</option>
+        <option value="Topo Chico">Topo Chico</option>
+        <option value="Tum-e Yummies">Tum-e Yummies</option>
+        <option value="Vitaminwater">Vitaminwater</option>
+        <option value="Surge">Surge</option>
+        <option value="Tab">Tab</option>
+    </select><br><br>
+
+    <label for="description">What is the flavor? : </label><textarea name="description"></textarea><br><br>
+
+    <label for="description">What packaging is the beverage in? : </label>
+    <select name="description">
+        <option value="">--None--</option>
+        <option value="Can">Can</option>
+        <option value="Bottle">Bottle</option>
+        <option value="Carton">Carton</option>
+        <option value="Pouch">Pouch</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+
+    <label for="description">What is the drink size? : </label>
+    <select name="description">
+        <option value="">--None--</option>
+        <option value="7.5oz">7.5oz</option>
+        <option value="8oz">8oz</option>
+        <option value="12oz/355ml">12oz/355ml</option>
+        <option value="341ml">341ml</option>
+        <option value="15oz/473ml">15oz/473ml</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+
+    <label for="description">What is the drink size? (for pouch) : </label>
+    <select name="description">
+        <option value="">--None--</option>
+        <option value="6oz">6oz</option>
+        <option value="6.75oz">6.75oz</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+
+    <label for="description">What is the bottle type? : </label>
+    <select name="description">
+        <option value="">--None--</option>
+        <option value="Aluminum">Aluminum</option>
+        <option value="Glass">Glass</option>
+        <option value="Plastic">Plastic</option>
+    </select><br><br>
+
+    <label for="description">What is the bottle size? : </label>
+    <select name="description">
+        <option value="">--None--</option>
+        <option value="295 ml / 10 oz">295 ml / 10 oz</option>
+        <option value="355 ml / 12 oz">355 ml / 12 oz</option>
+        <option value="500 ml / 20 oz">500 ml / 20 oz</option>
+        <option value="710 ml / 24oz">710 ml / 24oz</option>
+        <option value="1 L / 34 oz">1 L / 34 oz</option>
+        <option value="1.75 L / 59 oz">1.75 L / 59 oz</option>
+        <option value="2 L / 67 oz">2 L / 67 oz</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+
+    How many products are affected? : <input  id="00N5A00000Gqy7R" maxlength="255" name="00N5A00000Gqy7R" size="20" type="text" /><br><br>
+
+    <label>Is the drink part of a multipack? : </label>
+    <select>
+        <option value="">--None--</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option><br><br>
+    </select><br><br>
+
+    What is the size of the multipack? : <select  id="00N5A00000Gqy7F" name="00N5A00000Gqy7F" title="Multi-Pack Size"><br><br>
+        <option value="">--None--</option>
+        <option value="Single">Single</option>
+        <option value="4-Pk">4-Pk</option>
+        <option value="6-Pk">6-Pk</option>
+        <option value="8-Pk">8-Pk</option>
+        <option value="12-Pk">12-Pk</option>
+        <option value="24-Pk">24-Pk</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+
+    <label for="reason">Is the problem with the actual drink or the packaging? : </label>
+    <select  id="reason" name="reason" onchange="handleHelpOptionChange()">
+        <option value="">--None--</option>
+        <option value="Product">Drink</option>
+        <option value="Package">Packaging</option>
+    </select><br><br>
+
+    What is the problem with the drink? :
+    <select  id="00N5A00000Gqy7H" name="00N5A00000Gqy7H">
+    <option value="">--None--</option>
+    <option value="Off Taste">Off Taste</option>
+    <option value="Foreign Matter">Foreign Matter</option>
+    <option value="Old Product">Old Product</option>
+    <option value="Off Consistency">Off Consistency</option>
+    <option value="Off Odor">Off Odor</option>
+    <option value="Reaction">Reaction</option>
+    <option value="Off Color (Product)">Off Color</option>
+    <option>Looses</option>
+    <option value="Carbonation">Looses Carbonation</option>
+    <option value="Other">Other</option>
+    </select><br><br>
+
+    What is the problem with the packaging? : 
+    <select  id="00N5A00000Gqy7H" name="00N5A00000Gqy7H">
+    <option value="">--None--</option>
+    <option value="Plastic Closure">Plastic Closure</option>
+    <option value="Label">Label</option>
+    <option value="Bulged">Bulged</option>
+    <option value="Empty/Leaker/Low FIll">Empty/Leaker/Low Filled</option>
+    <option value="Sharp Edge">Sharp Edge</option>
+    <option value="Failed">Package Failed</option>
+    <option value="Dented">Dented</option>
+    <option value="Dirty">Dirty</option>
+    <option value="Other">Other</option>
+    </select><br><br>
+
+    Location of Purchase : <textarea  id="description" name="description" type="text" wrap="soft"></textarea><br><br>
+
+    Date of Purchase : <input  id="description" name="description"type="date" /><br><br>
+
+    First Name : <input  id="00N5A00000H3vOR" maxlength="255" name="00N5A00000H3vOR" size="20" type="text" /><br><br>
+
+    Last Name : <input  id="00N5A00000H3vOS" maxlength="255" name="00N5A00000H3vOS" size="20" type="text" /><br><br>
+
+    <label for="email">Email : </label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br><br>
+
+    <label for="phone">Phone Number: </label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br><br>
+
+    Street Address : <input  id="00N5A00000H3vOL" maxlength="255" name="00N5A00000H3vOL" size="20" type="text" /><br><br>
+    
+    <label for="description">City: </label>
+    <input id="description" name="description" size="20" type="text" /><br><br>
+
+    <label for="description">State: </label>
+    <input id="description" name="description" size="20" type="text" /><br><br>
+    
+    ZIP or Post Code : <input  id="00N5A00000H3vOP" maxlength="50" name="00N5A00000H3vOP" size="20" type="text" /><br><br>
+
+    Date of Birth : <input type="date" id="date" name="date"><br><br>
+
+    <label for="description">Message : </label><textarea name="description"></textarea><br><br>
+
+    <center>
+        <input type="submit" name="submit"><br>
+    </center>
+</div>
+</form>

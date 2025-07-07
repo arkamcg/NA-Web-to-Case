@@ -1,0 +1,287 @@
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <FORM> element to your page.             -->
+<!--  ----------------------------------------------------------------------  -->
+
+<form action="https://ecic2--qsedev.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D8N0000008i03" method="POST">
+
+<input type=hidden name="orgid" value="00D8N0000008i03">
+<input type=hidden name="retURL" value="http://google.co.in">
+<input type="hidden" name="00N5A00000H3vNA" value = "US">
+<input type="hidden" name="recordType" id="recordType" value="">
+<input  type="hidden" id="subject" maxlength="80" name="subject" size="20" type="text" value=""/><br>
+<!-- <input type = "hidden" id="00N5A00000Gqy6h" name="00N5A00000Gqy6h" title="Country For Decoding" value ="US"> -->
+<input type="hidden" id="00N5A00000Gqy8J" maxlength="255" name="00N5A00000Gqy8J" size="20" type="text" value="Coke.com Webform" />
+
+
+<script>
+    function setEcommerce(){
+        var categoryfield = document.getElementById("Category");
+        var recordTypeField = document.getElementById("recordType");
+        var sub = document.getElementById("subject");
+        var description = document.getElementsByName("description");
+        var zip = document.getElementById("00N5A00000H3vOP");
+        var location = document.getElementById("00N5A00000Gqy7t");
+        sub.value = categoryfield.value;
+        console.log('Subject field: ',categoryfield.value);   
+        console.log('Category Field Value: ' , categoryfield.value);
+        if(categoryfield.value === "Coca-Cola Store"){
+            recordTypeField.value = "0125A000001EUyD";      
+            console.log('Setting recordtype to E-Commerce: ',recordTypeField.value);
+        }
+        if(description.length) {
+            description[description.length-1].value = zip.value + '\n' + location.value;
+            console.log('Description :', description[description.length-1].value);
+        }
+    }
+    function handleHelpOptionChange() {
+    var categoryfield = document.getElementById("Category");
+      var helpOptions = document.getElementById("Topic");
+      var sub1 = document.getElementById("subject");
+      var recordTypeField = document.getElementById("recordType");
+      console.log('Selected help option:', helpOptions.value);
+      sub1.value =categoryfield.value + " - " + helpOptions.value;
+      console.log('Subject --> ', sub1.value);
+
+      if (helpOptions.value === "Product Quality") {
+        recordTypeField.value = "0125A000001EUyG";
+        console.log('Setting record type to Quality: 0125A000001EUyG');
+      } 
+      else if(helpOptions.value === "Company" || helpOptions.value === "Nutrition & Ingredients" || helpOptions.value === "Product Availability"){
+        recordTypeField.value = "0125A000001EUyE";
+        console.log('Setting recordtype to Non-Quality: ',recordTypeField.value);
+      }
+      else if(helpOptions.value === "Promotion & Rewards"){
+        recordTypeField.value = "0125A000001EUyF";
+        console.log('Setting recordtype to Promotion: ',recordTypeField.value);
+      }
+      else {
+        recordTypeField.value = "0125A000001EUyC"; 
+        console.log('Setting record type to Default: 0125A000001EUyC');
+      }
+    } 
+  </script>
+
+<style>
+    .webform-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 2px solid #414141;
+        border-radius: 25px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+<!--  these lines if you wish to test in debug mode.                          -->
+ <input type="hidden" name="debug" value=1>                              
+ <input type="hidden" name="debugEmail" value="arka.maitra@capgemini.com">                                     
+<!--  ----------------------------------------------------------------------  -->
+<div class="webform-container">
+
+    <center>
+        <h2>Coke.com Webform</h2>
+    </center><br>
+
+    First Name : <input  id="00N5A00000H3vOR" maxlength="255" name="00N5A00000H3vOR" size="20" type="text" /><br><br>
+
+    Last Name : <input  id="00N5A00000H3vOS" maxlength="255" name="00N5A00000H3vOS" size="20" type="text" /><br><br>
+
+    Date of Birth : <input type="date" id="date" name="date"><br><br>
+
+    <label for="email">Email Address : </label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br><br>
+
+    <!-- <label for="subject">Choose a Category :</label><select  id="subject" name="subject"   onchange="setEcommerce()"/> -->
+    <label for="Category">Choose a Category :</label>
+    <select name="Category" id="Category" onchange="setEcommerce()" > 
+    <option value="">--None--</option>
+    <option value="Coca-Cola">Coca-Cola</option>
+    <option value="Coca-Cola Store">Coca-Cola Store</option>
+    <option value="Coca-Cola Zero">Coca-Cola Zero</option>
+    <option value="Aha">Aha</option>
+    <option value="Bacardi Mixers">Bacardi Mixers</option>
+    <option value="Core Power">Core Power</option>
+    <option value="Diet Coke">Diet Coke</option>
+    <option value="Fairlife">Fairlife</option>
+    <option value="Fanta">Fanta</option>
+    <option value="Fresca">Fresca</option>
+    <option value="Honest Kids">Honest Kids</option>
+    <option value="Hubert's Lemonade">Hubert's Lemonade</option>
+    <option value="Mello Yello">Mello Yello</option>
+    <option value="Minute Maid">Minute Maid</option>
+    <option value="Moxie">Moxie</option>
+    <option value="Powerade">Powerade</option>
+    <option value="Seagram's">Seagram's</option>
+    <option value="Simply">Simply</option>
+    <option value="Sprite">Sprite</option>
+    <option value="Surge">Surge</option>
+    <option value="Dunkin Ready to Drink">Dunkin Ready to Drink</option>
+    <option value="VitaminWater">VitaminWater</option>
+    <option value="Pibb Xtra">Pibb Xtra</option>
+    <option value="Barq's">Barq's</option>
+    <option value="Dasani">Dasani</option>
+    <option value="Smartwater">Smartwater</option>
+    <option value="Hi-C">Hi-C</option>
+    <option value="Gold Peak">Gold Peak</option>
+    <option value="Fuze">Fuze</option>
+    <option value="Peace Tea">Peace Tea</option>
+    <option value="Topo Chico">Topo Chico</option>
+    <option value="Tum-e Yummies">Tum-e Yummies</option>
+    </select><br><br>
+
+
+    <div onchange="handleHelpOptionChange()">
+    <label for="Topic" >What's on your mind?  </label>
+    <select id="Topic" name="Topic">
+        <option value="">--None--</option>
+        <option value="Company">Company</option>
+        <option value="Nutrition & Ingredients">Nutrition & Ingredients</option>
+        <option value="Product Quality">Product Quality</option>
+        <option value="Product Availability">Product Availability</option>
+        <option value="Promotion & Rewards">Promotion & Rewards</option>
+        <option value="Other Topic">Other Topic</option>
+    </select><br><br></div>
+
+    Zip Code : <input  id="00N5A00000H3vOP" maxlength="50" name="00N5A00000H3vOP" size="20" type="text" onchange="setEcommerce()"/><br><br>
+
+    Mailing Address : <input  id="00N5A00000H3vOL" maxlength="255" name="00N5A00000H3vOL" size="20" type="text" /><br><br>
+
+    <label for="phone">Phone : </label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br><br>
+
+    <label>Do you still have the affected product? </label><select>
+        <option value="">--None--</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select><br><br>
+
+    Please enter the data code from the package : <input  id="00N5A00000H3vNw" maxlength="255" name="00N5A00000H3vNw" size="20" type="text" /><br><br>
+
+    <label for="description">What is the flavor as displayed on the package? : </label><textarea name="description"></textarea><br><br>
+
+    <label for="description">What is the package type? : </label>
+    <select name="description">
+        <option value="" disabled selected>--None--</option>
+        <option value="Can">Can</option>
+        <option value="Bottle">Bottle</option>
+        <option value="Carton">Carton</option>
+        <option value="Pouch">Pouch</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+    <label for="description">What is the bottle type? : </label>
+    <select name="description">
+        <option value="">--None--</option>
+        <option value="Aluminum">Aluminum</option>
+        <option value="Glass">Glass</option>
+        <option value="Plastic">Plastic</option>
+    </select><br><br>
+ 
+    <label for="description">What is the bottle size? : </label>
+    <select name="description">
+        <option value="">--None--</option>
+        <option value="7.5oz">7.5oz</option>
+        <option value="8oz">8oz</option>
+        <option value="12oz/355ml">12oz/355ml</option>
+        <option value="341ml">341ml</option>
+        <option value="15oz/473ml">15oz/473ml</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+ 
+    <label for="description">What is the carton size? : </label>
+    <select name="description">
+        <option value="">--None--</option>
+        <option value="7.5oz">7.5oz</option>
+        <option value="8oz">8oz</option>
+        <option value="12oz/355ml">12oz/355ml</option>
+        <option value="341ml">341ml</option>
+        <option value="15oz/473ml">15oz/473ml</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+ 
+    <label for="description">What is the pouch size? : </label>
+    <select name="description">
+      <option value="">--None--</option>
+      <option value="6oz">6oz</option>
+      <option value="6.75oz">6.75oz</option>
+      <option value="Other">Other</option>
+    </select><br><br>
+
+    If the drink is part of a multipack, what size is the beverage? : <select  id="00N5A00000Gqy7F" name="00N5A00000Gqy7F" title="Multi-Pack Size"><br><br>
+        <option value="" disabled selected>--None--</option>
+        <option value="Single">Single</option>
+        <option value="2-Pk">2-Pk</option>
+        <option value="4-Pk">4-Pk</option>
+        <option value="6-Pk">6-Pk</option>
+        <option value="8-Pk">8-Pk</option>
+        <option value="10-Pk">10-Pk</option>
+        <option value="12-Pk">12-Pk</option>
+        <option value="Unknown">Unknown</option>
+    </select><br><br>
+
+    Number of packages affected : <input  id="00N5A00000Gqy7R" maxlength="255" name="00N5A00000Gqy7R" size="20" type="text" /><br><br>
+
+    <label for="reason">Complaint Reason : </label>
+    <select  id="reason" name="reason">
+    <option value="">--None--</option>
+    <option value="Product">Product</option>
+    <option value="Package">Package</option>
+    </select><br><br>
+
+    Product : <select  id="00N5A00000Gqy7H" name="00N5A00000Gqy7H" title="Category Level3">
+    <option value="">--None--</option>
+    <option value="Carbonation">Carbonation</option>
+    <option value="Foreign Matter">Foreign Matter</option>
+    <option value="Foreign Matter NS">Foreign Matter NS</option>
+    <option value="Off Color (Product)">Off Color (Product)</option>
+    <option value="Off Consistency">Off Consistency</option>
+    <option value="Off Odor">Off Odor</option>
+    <option value="Off Taste">Off Taste</option>
+    <option value="Old Product">Old Product</option>
+    <option value="Reaction">Reaction</option>
+    </select><br><br>
+
+    Package : <select  id="00N5A00000Gqy7H" name="00N5A00000Gqy7H" title="Category Level3">
+    <option value="">--None--</option>
+    <option value="Plastic Closure">Plastic Closure</option>
+    <option value="Label">Label</option>
+    <option value="Bulged">Bulged</option>
+    <option value="Empty/Leaker/Low Fill">Empty/Leaker/Low Filled</option>
+    <option value="Sharp Edge">Sharp Edge</option>
+    <option value="Package Failed">Package Failed</option>
+    <option value="Dented">Dented</option>
+    <option value="Dirty">Dirty</option>
+    <option value="Other">Other</option>
+    </select><br><br>
+
+    Purchase Location (Retailer and city) : <textarea  id="00N5A00000Gqy7t" name="00N5A00000Gqy7t" type="text" wrap="soft"></textarea><br><br>
+
+    Date of Purchase : <span class="dateInput" id="dateInput"><input  id="00N5A00000H3vO0" name="00N5A00000H3vO0" size="20" type="date" /></span><br><br>
+
+    <label for="description">Description : </label><textarea name="description"></textarea><br><br>
+
+    <label for="Description" >What's on your mind? (For Coke Store) </label>
+    <select name="Description">
+        <option value="">--None--</option>
+        <option value="General item question">General item question</option>
+        <option value="Name or phrase pending or rejected">Name or phrase pending or rejected</option>
+        <option value="Coupon code not working">Coupon code not working</option>
+        <option value="Items incorrect or damaged">Items incorrect or damaged</option>
+        <option value="Order change or cancellation">Order change or cancellation</option>
+        <option value="Delivery or processing question">Delivery or processing question</option>
+    </select><br><br>
+
+    Order Confirmation Number : <textarea  id="description" name="description" type="text" wrap="soft"></textarea><br><br>
+
+    <h1><center>
+        <input type="submit" name="submit" value=" Submit ">
+    </center></h1>
+</div>
+</form>
