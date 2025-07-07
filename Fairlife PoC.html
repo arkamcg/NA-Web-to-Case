@@ -149,7 +149,7 @@
 
     Zip Code : <input  id="00N5A00000H3vOP" maxlength="50" name="00N5A00000H3vOP" size="20" type="text" onchange="setRecordType()"/><br><br>
 
-    Country : <select>
+    Country : <select id="description" name="description">
     <option value="">--None--</option>
     <option value="Afghanistan">Afghanistan</option>
     <option value="Albania">Albania</option>
@@ -393,7 +393,7 @@
     </select><br><br>
 
     <label for="description">Which brand are you reaching out about? : </label>
-    <select id="description" name="description">
+    <select id="description" name="description" onchange="setRecordType()">
         <option value="">--Select Brand--</option>
         <option value="General">General</option>
         <option value="Fairlife Ultra-Filtered Milk">Fairlife Ultra-Filtered Milk</option>
@@ -403,7 +403,7 @@
 
     <label for="description">Let us know how we can help you : </label><textarea id="description" name="description"></textarea><br><br>
 
-    Add a link to your Instagram : <textarea type="text" wrap="soft"></textarea><br><br> <!-- not sure if needed/mapped field not found -->
+    <!--Add a link to your Instagram : <textarea type="text" wrap="soft"></textarea><br><br>-->
 
     <center>
         <input type="submit" name="submit"><br>
