@@ -29,15 +29,18 @@
         var description = document.getElementsByName("description");
         var zip = document.getElementById("00N5A00000H3vOP");
         var location = document.getElementById("00N5A00000Gqy7t");
-        sub.value = categoryfield.value;
-        console.log('Subject field: ',categoryfield.value);   
+        var date = document.getElementById("00N5A00000H3vO0");
+        var storeCategory = document.getElementById("storeCategory");
         console.log('Category Field Value: ' , categoryfield.value);
         if(categoryfield.value === "Coca-Cola Store"){
-            recordTypeField.value = "0125A000001EUyD";      
+            recordTypeField.value = "0125A000001EUyD";
+            sub.value = categoryfield.value + " - " + storeCategory.value;
+            console.log('Subject --> ', sub.value);
+            description[description.length-1].value = categoryfield.value + '\n' + storeCategory.value;
+            console.log('Description :', description[description.length-1].value);
             console.log('Setting recordtype to E-Commerce: ',recordTypeField.value);
-        }
-        if(description.length) {
-            description[description.length-1].value = zip.value + '\n' + location.value;
+        } else if(description.length) {
+            description[description.length-1].value = categoryfield.value + '\n' + zip.value + '\n' + date.value + '\n' + location.value;
             console.log('Description :', description[description.length-1].value);
         }
     }
@@ -66,6 +69,7 @@
         recordTypeField.value = "0125A000001EUyC"; 
         console.log('Setting record type to Default: 0125A000001EUyC');
       }
+      setEcommerce();
     } 
   </script>
 
@@ -151,7 +155,7 @@
         <option value="Other Topic">Other Topic</option>
     </select><br><br></div>
 
-    Zip Code : <input  id="00N5A00000H3vOP" maxlength="50" name="00N5A00000H3vOP" size="20" type="text" onchange="setEcommerce()"/><br><br>
+    Zip Code : <input  id="00N5A00000H3vOP" maxlength="50" name="00N5A00000H3vOP" size="20" type="text"/><br><br>
 
     Mailing Address : <input  id="00N5A00000H3vOL" maxlength="255" name="00N5A00000H3vOL" size="20" type="text" /><br><br>
 
@@ -260,15 +264,21 @@
     <option value="Dirty">Dirty</option>
     <option value="Other">Other</option>
     </select><br><br>
+    
+    <label for="description">City: </label>
+    <input id="description" name="description" size="20" type="text" /><br><br>
+
+    <label for="description">State: </label>
+    <input id="description" name="description" size="20" type="text" /><br><br>
 
     Purchase Location (Retailer and city) : <textarea  id="00N5A00000Gqy7t" name="00N5A00000Gqy7t" type="text" wrap="soft"  onchange="setEcommerce()"></textarea><br><br>
 
     Date of Purchase : <span class="dateInput" id="dateInput"><input  id="00N5A00000H3vO0" name="00N5A00000H3vO0" size="20" type="date" /></span><br><br>
 
-    <label for="description">Description : </label><textarea name="description"></textarea><br><br>
+    <label for="description">Description : </label><textarea name="description"  onchange="setEcommerce()"></textarea><br><br>
 
-    <label for="Description" >What's on your mind? (For Coke Store) </label>
-    <select name="Description">
+    <label for="storeCategory" >What's on your mind? (For Coke Store) </label>
+    <select id="storeCategory" name="storeCategory" onchange="setEcommerce()">
         <option value="">--None--</option>
         <option value="General item question">General item question</option>
         <option value="Name or phrase pending or rejected">Name or phrase pending or rejected</option>
