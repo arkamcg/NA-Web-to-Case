@@ -144,7 +144,7 @@
     Please enter the date code from the package : <input  id="00N5A00000H3vNw" maxlength="255" name="00N5A00000H3vNw" size="20" type="text" /><br><br>
 
     What is the brand? : 
-    <select id="brand" name="brand" onchange="setEcommerce()">
+    <select id="brand" name="brand" onchange="handleHelpOptionChange()">
         <option value="">--None--</option>
         <option value="Coca-Cola">Coca-Cola</option>
         <option value="Coca-Cola Zero Sugar">Coca-Cola Zero Sugar</option>
@@ -309,7 +309,7 @@
     <label for="description">State: </label>
     <input id="description" name="description" size="20" type="text" /><br><br>
     
-    ZIP or Post Code : <input  id="00N5A00000H3vOP" maxlength="50" name="00N5A00000H3vOP" size="20" type="text" /><br><br>
+    ZIP or Post Code : <input  id="00N5A00000H3vOP" maxlength="50" name="00N5A00000H3vOP" size="20" type="text" onchange="handleHelpOptionChange()"/><br><br>
 
     Date of Birth : <input type="date" id="date" name="date"><br><br>
 
