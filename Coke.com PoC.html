@@ -35,9 +35,9 @@
         if(categoryfield.value === "Coca-Cola Store"){
             recordTypeField.value = "0125A000001EUyD";
             sub.value = categoryfield.value + " - " + storeCategory.value;
-            console.log('Subject --> ', sub.value);
-            description[description.length-1].value = categoryfield.value + '\n' + storeCategory.value;
+            description[description.length-1].value = categoryfield.value;
             console.log('Description :', description[description.length-1].value);
+            console.log('Subject --> ', sub.value);
             console.log('Setting recordtype to E-Commerce: ',recordTypeField.value);
         } else if(description.length) {
             description[description.length-1].value = categoryfield.value + '\n' + zip.value + '\n' + date.value + '\n' + location.value;
@@ -275,8 +275,6 @@
 
     Date of Purchase : <span class="dateInput" id="dateInput"><input  id="00N5A00000H3vO0" name="00N5A00000H3vO0" size="20" type="date" /></span><br><br>
 
-    <label for="description">Description : </label><textarea name="description"  onchange="setEcommerce()"></textarea><br><br>
-
     <label for="storeCategory" >What's on your mind? (For Coke Store) </label>
     <select id="storeCategory" name="storeCategory" onchange="setEcommerce()">
         <option value="">--None--</option>
@@ -289,6 +287,8 @@
     </select><br><br>
 
     Order Confirmation Number : <textarea  id="description" name="description" type="text" wrap="soft"></textarea><br><br>
+    
+    <label for="description">Description : </label><textarea name="description"></textarea><br><br>
 
     <h1><center>
         <input type="submit" name="submit" value=" Submit ">
