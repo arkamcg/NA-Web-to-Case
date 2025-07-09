@@ -17,7 +17,7 @@
 <input type="hidden" name="00N5A00000H3vNA" value = "US">
 <input type="hidden" name="recordType" id="recordType" value="">
 <input  type="hidden" id="subject" maxlength="80" name="subject" size="20" type="text" value=""/><br>
-<!-- <input type = "hidden" id="00N5A00000Gqy6h" name="00N5A00000Gqy6h" title="Country For Decoding" value ="US"> -->
+<input type = "hidden" id="00N5A00000Gqy6h" name="00N5A00000Gqy6h" title="Country For Decoding" value ="US">
 <input type="hidden" id="00N5A00000Gqy8J" maxlength="255" name="00N5A00000Gqy8J" size="20" type="text" value="Coke.com Webform" />
 
 
@@ -40,7 +40,7 @@
             console.log('Subject --> ', sub.value);
             console.log('Setting recordtype to E-Commerce: ',recordTypeField.value);
         } else if(description.length) {
-            description[description.length-1].value = categoryfield.value + '\n' + zip.value + '\n' + date.value + '\n' + location.value;
+            description[description.length-1].value = categoryfield.value + '\n' + zip.value + '\n' + location.value + '\n' + date.value;
             console.log('Description :', description[description.length-1].value);
         }
     }
@@ -271,9 +271,9 @@
     <label for="description">State: </label>
     <input id="description" name="description" size="20" type="text" /><br><br>
 
-    Purchase Location (Retailer and city) : <textarea  id="00N5A00000Gqy7t" name="00N5A00000Gqy7t" type="text" wrap="soft"  onchange="setEcommerce()"></textarea><br><br>
+    Purchase Location (Retailer and city) : <textarea  id="00N5A00000Gqy7t" name="00N5A00000Gqy7t" type="text" wrap="soft"></textarea><br><br>
 
-    Date of Purchase : <span class="dateInput" id="dateInput"><input  id="00N5A00000H3vO0" name="00N5A00000H3vO0" size="20" type="date" /></span><br><br>
+    Date of Purchase : <span class="dateInput" id="dateInput"><input  id="00N5A00000H3vO0" name="00N5A00000H3vO0" size="20" type="date" onchange="setEcommerce()"/></span><br><br>
 
     <label for="storeCategory" >What's on your mind? (For Coke Store) </label>
     <select id="storeCategory" name="storeCategory" onchange="setEcommerce()">
